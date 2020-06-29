@@ -11,7 +11,7 @@
         <p v-if="!cartItems.length">Корзина пуста</p>
 
         <div class="selectPr" v-for="item of cartItems" :key="item.id_product">
-          <img class="basket__img" :src="item.product_image" alt />
+          <nuxt-link no-prefetch :to="'/products/' + item.id_product"><img class="basket__img" :src="item.product_image" alt="img" /></nuxt-link>
           <p class="basket__p">
             {{item.quantity}}
             <span style="font-size: 10px;">x</span>
@@ -31,11 +31,11 @@
         </div>
         <div class="selectPr">
           <a href="checkout.html" class="check_ok basket_check_ok">Checkout</a>
-          <a
-            href="shoppingCart.html"
+          <nuxt-link no-prefetch
+            to="/shoppingCart"
             class="check_ok basket_check_ok"
             style="color: #f16d7f"
-          >Go to cart</a>
+          >Go to cart</nuxt-link>
         </div>
       </div>
     </div>

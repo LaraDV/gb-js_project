@@ -18,11 +18,24 @@ export default {
   },
   computed: {
     product ({ $route }) {
-      console.log($route.params); //$route.params.id  /string/
-      let products = this.$store.getters["products/products"];
-      console.log(products.find(el => el.id_product === 1));
-      return products.find(el => el.id_product == $route.params.id);
+      return (this.$store.getters["products/products"]).find(el => el.id_product == $route.params.id)
     }
   }
 };
+/////////////////////////-- другой вариант --////////////////////////
+// import { mapGetters } from 'vuex'
+// export default {
+//   data() {
+//     return {
+//     };
+//   },
+//   computed: {
+//     product ({ $route , mapGetters}) {
+//       return this.products.find(el => el.id_product == this.$route.params.id)
+//     },
+//     ...mapGetters({
+//         products: 'products/products' // Модуль/геттер, products доступно, как this.products
+//       })
+//   }
+// };
 </script>

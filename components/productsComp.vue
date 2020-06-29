@@ -2,17 +2,16 @@
   <div>
     <div class="product__box center">
       <div class="product" v-for="product of products" :key="product.id_product">
-        <nuxt-link to="#">
+        <nuxt-link no-prefetch :to="'/products/' + product.id_product">
           <img
             class="product__img"
             :src="product.product_image"
             alt="photo"
-            @click.prevent="openProductPage(product)"
           />
         </nuxt-link>
         <div class="product__content">
           <a href="#" class="product__name">Mango People T-shirt</a>
-          <p class="product__price">$52.00</p>
+          <p class="product__price">${{product.price}}</p>
         </div>
         <a href="#" class="product__add" @click.prevent="add_to_cart(product, $event)">Add to Cart</a>
       </div>
@@ -21,22 +20,29 @@
 </template>
 <script>
 export default {
-  data: () => ({}),
-  async mounted() {},
+  data: () => ({
+    isIndexPage: Boolean
+  }),
   computed: {
     products() {
-      return this.$store.getters["products/products"];
+      if (this.isIndexPage ===true) {
+        return this.$store.getters["products/products"].filter(
+        el => el.rating >= 5
+      );
+      }else{
+        return this.$store.getters["products/products"]
+      }
     }
   },
   methods: {
     add_to_cart(product, $event) {
       console.log(event);
-      console.log(product.id_product);
       this.$store.dispatch("cartComp/add", product);
-    },
-    openProductPage(product) {
-      this.$router.push("/products/" + product.id_product);
-      console.log(this.$router);
+    }
+  },
+  mounted() {
+    if (this.$parent.$el.id ==="index") {
+      return this.isIndexPage = true;
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="index">
     <div class="promo center">
       <div class="promo_content">
         <h1 class="promo_h1">THE BRAND</h1>
@@ -11,7 +11,7 @@
     </div>
     <div class="deal center">
       <div class="deal_box">
-        <a href>
+        <nuxt-link to="#">
           <div
             :style="{'background-image': 'url(' + require('~/static/img/for_men.png') + ')' }"
             class="deal_big"
@@ -21,8 +21,8 @@
               <h1 class="deal_h3">for men</h1>
             </div>
           </div>
-        </a>
-        <a href>
+        </nuxt-link>
+        <nuxt-link to="#">
           <div
             :style="{'background-image': 'url(' + require('~/static/img/lux.png') + ')' }"
             class="deal_mini"
@@ -32,10 +32,10 @@
               <h1 class="deal_h3">ACCESORIES</h1>
             </div>
           </div>
-        </a>
+        </nuxt-link>
       </div>
       <div class="deal_box">
-        <a href>
+        <nuxt-link to="#">
           <div
             :style="{'background-image': 'url(' + require('~/static/img/for_women.png') + ')' }"
             class="deal_mini"
@@ -45,8 +45,8 @@
               <h1 class="deal_h3">women</h1>
             </div>
           </div>
-        </a>
-        <a href>
+        </nuxt-link>
+        <nuxt-link to="#">
           <div
             :style="{'background-image': 'url(' + require('~/static/img/for_kids.png') + ')' }"
             class="deal_big"
@@ -56,7 +56,7 @@
               <h1 class="deal_h3">for kids</h1>
             </div>
           </div>
-        </a>
+        </nuxt-link>
       </div>
     </div>
     <productsComp></productsComp>

@@ -11,10 +11,10 @@ export default {
   <div>
     <header class="header center">
       <div class="header_left">
-        <a href="index.html" class="logo">
+        <nuxt-link to="/" class="logo">
           <img class="logo_img" src="~/static/img/b.png" alt="logo" />BRAN
           <span class="logo_span">D</span>
-        </a>
+        </nuxt-link>
         <form class="header_form" action="#">
           <details class="header_browse">
             <summary class="header_browse_summary">
@@ -87,11 +87,12 @@ export default {
         </form>
       </div>
       <div class="header_right">
-        <cartComp />
-        <a href="shoppingCart.html" class="button">
+        <cartComp>
+        </cartComp>
+        <nuxt-link no-prefetch to="/shoppingCart" class="button">
           My Account
           <img src="~/static/img/2.png" alt />
-        </a>
+        </nuxt-link>
       </div>
     </header>
     <div class="nav center">
