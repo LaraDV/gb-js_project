@@ -11,7 +11,7 @@
         <p v-if="!cartItems.length">Корзина пуста</p>
 
         <div class="selectPr" v-for="item of cartItems" :key="item.id_product">
-          <nuxt-link no-prefetch :to="'/products/' + item.id_product"><img class="basket__img" :src="item.product_image" alt="img" /></nuxt-link>
+          <nuxt-link no-prefetch :to="'/products/' + item.id_product"><img class="basket__img" :src='item.product_image' alt="img" /></nuxt-link>
           <p class="basket__p">
             {{item.quantity}}
             <span style="font-size: 10px;">x</span>
@@ -19,10 +19,10 @@
           </p>
           <div class="basket__content">
             <h3 class="basket__h3">Rebox Zane</h3>
-            <img src="img/rating.png" alt class="rating" />
+            <img src="~/static/img/rating.png" alt class="rating" />
           </div>
           <a class="selected__del" href="#" @click.prevent="remove_from_cart(item)">
-            <img src="img/del.png" alt />
+            <img src="~/static/img/del.png" alt />
           </a>
         </div>
         <div class="selectPr">
@@ -58,9 +58,9 @@ export default {
     }
   },
   methods: {
-    remove_from_cart(item) {
-      console.log(item.id_product);
-      this.$store.dispatch("cartComp/remove", item);
+    remove_from_cart(product) {
+      let n = -1;
+      this.$store.dispatch("cartComp/remove", {product, n});
     }
   }
 };

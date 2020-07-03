@@ -1,0 +1,364 @@
+<template>
+  <div>
+    <main class="catalog_main center">
+      <div class="filter">
+        <details class="product_details" open>
+          <summary class="catalog_main_summary">category</summary>
+          <ul>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Accessories</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Bags</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Denim</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Hoodies &amp; Sweatshirts</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Jackets &amp; Coats</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Pants</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Polos</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Shirts</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Shoes</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Shorts</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Sweaters &amp; Knits</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">T-Shirts</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Tanks</a>
+            </li>
+          </ul>
+        </details>
+        <details class="product_details">
+          <summary class="catalog_main_summary">brand</summary>
+          <ul>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Jackets &amp; Coats</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Pants</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Polos</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Shirts</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Shoes</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Shorts</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Sweaters &amp; Knits</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">T-Shirts</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Tanks</a>
+            </li>
+          </ul>
+        </details>
+        <details class="product_details">
+          <summary class="catalog_main_summary">designer</summary>
+          <ul>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Jackets &amp; Coats</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Pants</a>
+            </li>
+            <li class="catalog_main_category">
+              <a class="catalog_main_category_link" href="#">Polos</a>
+            </li>
+          </ul>
+        </details>
+      </div>
+      <div class="goods">
+        <div class="goods-filter">
+          <div class="goods-filter_form">
+            <h2 class="goods-filter_h2">trending now</h2>
+            <div class="goods-filter_box">
+              <a class="trends_a" href="#" onclick>Bohemian</a>
+              <a class="trends_a" href="#" onclick>Floral</a>
+              <a class="trends_a" href="#" onclick>Lace</a>
+              <a class="trends_a" href="#" onclick>Floral</a>
+              <a class="trends_a" href="#" onclick>Lace</a>
+              <a class="trends_a" href="#" onclick>Bohemian</a>
+            </div>
+          </div>
+          <form class="goods-filter_form">
+            <h2 class="goods-filter_h2">size</h2>
+            <div class="goods-filter_box">
+              <div class="size">
+                <input type="checkbox" id="xxs" />
+                <label for="xxs">xxs</label>
+              </div>
+              <div class="size">
+                <input type="checkbox" id="xs" />
+                <label for="xs">xs</label>
+              </div>
+              <div class="size">
+                <input type="checkbox" id="s" />
+                <label for="s">s</label>
+              </div>
+              <div class="size">
+                <input type="checkbox" id="m" />
+                <label for="m">m</label>
+              </div>
+              <div class="size">
+                <input type="checkbox" id="l" />
+                <label for="l">l</label>
+              </div>
+              <div class="size">
+                <input type="checkbox" id="xl" />
+                <label for="xl">xl</label>
+              </div>
+              <div class="size">
+                <input type="checkbox" id="xxl" />
+                <label for="xxl">xxl</label>
+              </div>
+            </div>
+          </form>
+          <form class="goods-filter_form" style="width: 263px;">
+            <h2 class="goods-filter_h2">price</h2>
+            <input id="range" type="range" value="100" step="0.01" />
+            <p>
+              $
+              <output for="range" name="price"></output>
+            </p>
+          </form>
+        </div>
+        <div class="sorting">
+          <div
+            class="sotring_box"
+            style="display: flex; height: 30px; padding: 10px 0 10px 10px; font-size: 14px; color: #6f6e6e;"
+          >
+            <p
+              class="sotring_legend"
+              style="display: flex;align-items: center;background-color: white;height: 28px;padding: 0 13px;border: 1px solid #e6e6e6;"
+            >Sort By</p>
+            <select
+              class="sorting_select"
+              style="border: none;border: 1px solid #e6e6e6; padding-right: 28px;"
+            >
+              <option class="sorting_option">Name</option>
+              <option class="sorting_option">Price</option>
+            </select>
+          </div>
+          <div
+            class="sotring_box"
+            style="display: flex; height: 30px; padding: 10px 0 10px 10px;font-size: 14px; color: #6f6e6e;"
+          >
+            <p
+              class="sotring_legend"
+              style="display: flex;align-items: center;background-color: white;height: 28px;padding: 0 13px;border: 1px solid #e6e6e6;"
+            >Show</p>
+            <select class="sorting_select" style="border: none;border: 1px solid #e6e6e6;">
+              <option class="sorting_option">6</option>
+              <option class="sorting_option">12</option>
+            </select>
+          </div>
+        </div>
+        <productsComp></productsComp>
+      </div>
+    </main>
+  </div>
+</template>
+
+<script>
+import productsComp from "@/components/productsComp";
+export default {
+  components: {
+    productsComp
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.catalog_main {
+  margin-top: 71px;
+  display: flex;
+  .catalog_main_category {
+    list-style-type: none;
+    font-size: 14px;
+    padding-left: 16.97px;
+    line-height: 33px;
+    .catalog_main_category_link {
+      color: #6f6e6e;
+      display: block;
+      &:hover {
+        color: $color-site-active;
+      }
+    }
+  }
+  .filter {
+    .product_details:nth-child(2n) {
+      margin: 18px 0;
+    }
+    .product_details[open] > summary {
+      color: #ef5b70;
+    }
+    .product_details[open] > summary::after {
+      content: url("/img/summary_open_marker.png");
+    }
+    .catalog_main_summary {
+      padding-left: 11px;
+      border-left: 5px solid #ef5b70;
+      border-bottom: 1px solid #f3f3f3;
+      height: 37px;
+      width: 243px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #6f6e6e;
+      line-height: 20px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .catalog_main_summary::-webkit-details-marker {
+      display: none;
+    }
+    .catalog_main_summary::after {
+      content: url("/img/summary_marker.png");
+      padding-right: 0.5em;
+      float: right;
+    }
+  }
+  .goods {
+    margin-left: 49px;
+    width: calc(100% - 253px);
+    &-filter {
+      display: flex;
+      justify-content: space-between;
+      &_h2 {
+        font-size: 14px;
+        font-weight: bold;
+        color: #6f6e6e;
+        line-height: 20px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+      &_form {
+        width: 236px;
+        output {
+          width: 100px;
+          height: 25px;
+        }
+        .size input[type="checkbox"] {
+          opacity: 0;
+        }
+        .size input[type="checkbox"] + label::after {
+          content: none;
+        }
+        .size input[type="checkbox"]:checked + label::after {
+          content: "";
+        }
+        .size {
+          text-transform: uppercase;
+          font-family: "Open Sans";
+          font-size: 14px;
+          color: #6f6e6e;
+          line-height: 9px;
+          &:last-child {
+            margin-right: 0;
+          }
+          & label {
+            position: relative;
+            padding-right: 27px;
+          }
+        }
+        .size label::before {
+          content: "";
+          display: inline-block;
+          height: 11px;
+          width: 11px;
+          border: 1px solid #ebebeb;
+          position: absolute;
+          top: 3px;
+          left: -21px;
+        }
+        .size label::after {
+          content: "";
+          display: inline-block;
+          top: 5px;
+          left: -18.5px;
+          height: 3px;
+          width: 5.8px;
+          border-left: 2px solid;
+          border-bottom: 2px solid;
+          transform: rotate(-45deg);
+          position: absolute;
+        }
+      }
+      &_box {
+        height: 39px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        .trends_a {
+          display: inline-block;
+          font-size: 14px;
+          color: #6f6e6e;
+          line-height: 12px;
+          padding: 0 16px;
+          border-left: 1.5px solid #ebebeb;
+          &:nth-child(1),
+          &:nth-child(4) {
+            padding-left: 0;
+            border-left: none;
+          }
+          &:hover {
+            color: $color-site-active;
+          }
+        }
+      }
+    }
+    .sorting {
+      height: 50px;
+      width: 846px;
+      background-color: #f3f3f3;
+      margin: 47px 0;
+      display: flex;
+      &_select {
+        @extend.catalog_main_category_link;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        background: url("/img/summary_marker.png") no-repeat 85% center; /* http://htmlbook.ru/css/background-position*/
+        padding: 0 35px 0 10px;
+        background-color: white;
+        &:hover {
+          color: #6f6e6e;
+        }
+        &::after {
+          content: url("/img/summary_marker.png");
+          padding-right: 0.5em;
+          float: right;
+        }
+      }
+    }
+  }
+}
+</style>

@@ -34,7 +34,7 @@
             type="number"
             min="0"
             :value="item.quantity"
-            @change="changeFromInput(item, $event)"
+            @change.prevent="changeFromInput(item, $event)"
           />
         </div>
         <div class="selected__products__char">FREE</div>
@@ -66,19 +66,19 @@ export default {
     }
   },
   methods: {
-    remove_from_cart(item) {
-      this.$store.dispatch("cartComp/remove", item);
+    remove_from_cart(product) {
+      let n = -1
+      this.$store.dispatch("cartComp/remove", {product, n});
     },
-    changeFromInput(item, event) {
-      console.log(event);
-      if (item.quantity > event.target.value) {
-        console.log("Убавили количество");
-        this.$store.dispatch("cartComp/remove", item);
+    changeFromInput(product, event) {
+      if (product.quantity > event.target.value) {
+        let n = event.target.value - product.quantity;
+        this.$store.dispatch("cartComp/remove", { product, n });
       } else {
-        console.log("Увеличили количество");
-        this.$store.dispatch("cartComp/add", item);
+        let n = event.target.value - product.quantity;
+        this.$store.dispatch("cartComp/add", { product, n });
       }
-    },
+    }
   }
 };
 </script>

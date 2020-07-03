@@ -4,9 +4,9 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addProduct(state, product) {
+  addProduct(state, {product,n}) {
     state.cartItems.push(product)
-    state.totalSumm += product.price
+    state.totalSumm += product.price*n
     console.log(state.cartItems)
   },
   changeProductQuantity(state, {find, n}) {
@@ -23,31 +23,30 @@ export const actions = {
   add({
     commit,
     state
-  }, product) {
+  }, {product, n}) {
     console.log(state.cartItems)
     let find = state.cartItems.find(el => el.id_product === product.id_product);
     if (find) {
-      let n = 1
       commit('changeProductQuantity', {find, n})
     } else {
-      product["quantity"] = 1
-      commit('addProduct', product)
+      product["quantity"] = n
+      commit('addProduct', {product,n})
     }
   },
   remove({
     commit,
     state
-  }, item) {
-    let find = state.cartItems.find(el => el.id_product === item.id_product);
+  }, {product, n = -1}) {
+    let find = state.cartItems.find(el => el.id_product === product.id_product);
     if (find.quantity > 1) {
-      let n = -1
+      // n *= -1
       commit('changeProductQuantity', {find, n})
     } else {
       commit('removeProduct', find)
     }
   }
 }
-
+///Поставить везде item, кнопку инпута сделать v-model/кнопка отправить должна вызывать функцию-это на странице товара
 export const getters = {
   cartItems: s => s.cartItems,
   totalSumm: s => s.totalSumm
