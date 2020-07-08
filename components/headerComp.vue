@@ -1,12 +1,3 @@
-<script>
-import cartComp from "@/components/cartComp";
-
-export default {
-  components: {
-    cartComp
-  }
-};
-</script>
 <template>
   <div>
     <header class="header center">
@@ -15,7 +6,7 @@ export default {
           <img class="logo_img" src="~/static/img/b.png" alt="logo" />BRAN
           <span class="logo_span">D</span>
         </nuxt-link>
-        <form class="header_form" action="#">
+        <form class="header_form" action="#" @submit.prevent="setSearch">
           <details class="header_browse">
             <summary class="header_browse_summary">
               Browse
@@ -26,69 +17,73 @@ export default {
                 <h3 class="drop__h3">Women</h3>
                 <ul class="drop__ul">
                   <li>
-                    <a href="#" class="drop__link">Dresses</a>
+                    <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Tops</a>
+                    <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Sweaters/Knits</a>
+                    <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Jackets/Coats</a>
+                    <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Blazers</a>
+                    <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Denim</a>
+                    <nuxt-link to="/products" class="drop__link">Denim</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Leggings/Pants</a>
+                    <nuxt-link to="/products" class="drop__link">Leggings/Pants</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Skirts/Shorts</a>
+                    <nuxt-link to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Accessories</a>
+                    <nuxt-link to="/products" class="drop__link">Accessories</nuxt-link>
                   </li>
                 </ul>
                 <h3 class="drop__h3">Men</h3>
                 <ul class="drop__ul">
                   <li>
-                    <a href="#" class="drop__link">Tees/Tank tops</a>
+                    <nuxt-link to="/products" class="drop__link">Tees/Tank tops</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Shirts/Polos</a>
+                    <nuxt-link to="/products" class="drop__link">Shirts/Polos</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Sweaters/Knits</a>
+                    <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Sweaters</a>
+                    <nuxt-link to="/products" class="drop__link">Sweaters</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Sweatshirts/Hoodies</a>
+                    <nuxt-link to="/products" class="drop__link">Sweatshirts/Hoodies</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Blazers</a>
+                    <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
                   </li>
                   <li>
-                    <a href="#" class="drop__link">Jackets/vests</a>
+                    <nuxt-link to="/products" class="drop__link">Jackets/vests</nuxt-link>
                   </li>
                 </ul>
               </div>
             </div>
           </details>
-          <input class="header_form_input" type="text" placeholder="Search for Item..." />
+          <input
+            class="header_form_input"
+            type="text"
+            placeholder="Search for Item..."
+            v-model="userSearch"
+          />
           <button class="search">
             <img class="search_img" src="/img/search.png" alt />
           </button>
         </form>
       </div>
       <div class="header_right">
-        <cartComp>
-        </cartComp>
+        <cartComp></cartComp>
         <nuxt-link no-prefetch to="/shoppingCart" class="button">
           My Account
           <img src="~/static/img/2.png" alt />
@@ -98,40 +93,40 @@ export default {
     <div class="nav center">
       <ul class="menu">
         <li class="menu_list">
-          <a class="menu_link" href="index.html">Home</a>
+          <nuxt-link class="menu_link" to="/">Home</nuxt-link>
         </li>
         <li class="menu_list">
-          <a class="menu_link" href>Man</a>
+          <nuxt-link class="menu_link" to="#">Man</nuxt-link>
           <div class="drop">
             <div class="drop__flex">
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Jackets/Coats</a>
+                  <nuxt-link no-prefetch class="drop__link" to="/products">Jackets/Coats</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Blazers</a>
+                  <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Denim</a>
+                  <nuxt-link to="/products" class="drop__link">Denim</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Leggings/Pants</a>
+                  <nuxt-link to="/products" class="drop__link">Leggings/Pants</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Skirts/Shorts</a>
+                  <nuxt-link to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Accessories</a>
+                  <nuxt-link to="/products" class="drop__link">Accessories</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -139,28 +134,28 @@ export default {
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Jackets/Coats</a>
+                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
               </ul>
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -168,63 +163,63 @@ export default {
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Jackets/Coats</a>
+                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
               </ul>
-              <a href class="drop_stock">
+              <nuxt-link to="#" class="drop_stock">
                 <img src="/img/drop_img.jpeg" alt />
                 <p class="drop_stock_p">
                   super
                   <br />sale
                 </p>
-              </a>
+              </nuxt-link>
             </div>
           </div>
         </li>
         <li class="menu_list">
-          <a class="menu_link" href>Women</a>
+          <nuxt-link class="menu_link" to="/products">Women</nuxt-link>
         </li>
         <li class="menu_list">
-          <a class="menu_link" href>Kids</a>
+          <nuxt-link class="menu_link" to="/products">Kids</nuxt-link>
           <div class="drop">
             <div class="drop__flex">
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Jackets/Coats</a>
+                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Blazers</a>
+                  <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Denim</a>
+                  <nuxt-link to="/products" class="drop__link">Denim</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Leggings/Pants</a>
+                  <nuxt-link to="/products" class="drop__link">Leggings/Pants</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Skirts/Shorts</a>
+                  <nuxt-link to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Accessories</a>
+                  <nuxt-link to="/products" class="drop__link">Accessories</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -232,71 +227,71 @@ export default {
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Jackets/Coats</a>
+                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
               </ul>
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
               </ul>
             </div>
           </div>
         </li>
         <li class="menu_list">
-          <a class="menu_link" href>Accoseriese</a>
+          <nuxt-link class="menu_link" to="/products">Accoseriese</nuxt-link>
         </li>
         <li class="menu_list">
-          <a class="menu_link" href>Featured</a>
+          <nuxt-link class="menu_link" to="/products">Featured</nuxt-link>
         </li>
         <li class="menu_list">
-          <a class="menu_link" href>Hot Deals</a>
+          <nuxt-link class="menu_link" to="/products">Hot Deals</nuxt-link>
           <div class="drop drop_last">
             <div class="drop__flex">
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Jackets/Coats</a>
+                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Blazers</a>
+                  <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Denim</a>
+                  <nuxt-link to="/products" class="drop__link">Denim</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Leggings/Pants</a>
+                  <nuxt-link to="/products" class="drop__link">Leggings/Pants</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Skirts/Shorts</a>
+                  <nuxt-link to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Accessories</a>
+                  <nuxt-link to="/products" class="drop__link">Accessories</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -304,28 +299,28 @@ export default {
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Jackets/Coats</a>
+                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
               </ul>
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <a href="#" class="drop__link">Dresses</a>
+                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Tops</a>
+                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="drop__link">Sweaters/Knits</a>
+                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -335,6 +330,23 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+import cartComp from "@/components/cartComp";
+export default {
+  data: () => ({
+    userSearch: ""
+  }),
+  components: {
+    cartComp
+  },
+  methods: {
+    setSearch() {
+      this.$store.dispatch("products/setSearch", this.userSearch);
+    }
+  }
+};
+</script>
 
 
 

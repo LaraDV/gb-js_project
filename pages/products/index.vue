@@ -6,40 +6,80 @@
           <summary class="catalog_main_summary">category</summary>
           <ul>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Accessories</a>
+              <a class="catalog_main_category_link" href="#"
+              data-criterion="category"
+                data-value="Blazers"
+                @click.prevent="setFilter($event.target)"
+              >Blazers</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Bags</a>
+              <a class="catalog_main_category_link" href="#"
+              data-criterion="category"
+                data-value="Dresses"
+                @click.prevent="setFilter($event.target)"
+              >Dresses</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Denim</a>
+              <a class="catalog_main_category_link" href="#"
+              data-criterion="category"
+                data-value="Blouses"
+                @click.prevent="setFilter($event.target)"
+              >Blouses</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Hoodies &amp; Sweatshirts</a>
+              <a class="catalog_main_category_link" href="#"
+              data-criterion="category"
+                data-value="Hoodies &amp; Sweatshirts"
+                @click.prevent="setFilter($event.target)"
+              >Hoodies &amp; Sweatshirts</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Jackets &amp; Coats</a>
+              <a class="catalog_main_category_link" href="#"
+              data-criterion="category"
+                data-value="Jackets &amp; Coats"
+                @click.prevent="setFilter($event.target)"
+              >Jackets &amp; Coats</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Pants</a>
+              <a class="catalog_main_category_link" href="#"
+              data-criterion="category"
+                data-value="Pants"
+                @click.prevent="setFilter($event.target)"
+              >Pants</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Polos</a>
+              <a
+                class="catalog_main_category_link"
+                href="#"
+                data-criterion="category"
+                data-value="Polos"
+                @click.prevent="setFilter($event.target)"
+              >Polos</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Shirts</a>
+              <a
+                class="catalog_main_category_link"
+                href="#"
+                data-criterion="category"
+                data-value="T-Shirts"
+                @click.prevent="setFilter($event.target)"
+              >T-Shirts</a>
             </li>
             <li class="catalog_main_category">
               <a class="catalog_main_category_link" href="#">Shoes</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Shorts</a>
+              <a
+                class="catalog_main_category_link"
+                href="#"
+                @click.prevent="setFilter($event.target)"
+              >Shorts</a>
             </li>
             <li class="catalog_main_category">
               <a class="catalog_main_category_link" href="#">Sweaters &amp; Knits</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">T-Shirts</a>
+              <a class="catalog_main_category_link" href="#">Shirts</a>
             </li>
             <li class="catalog_main_category">
               <a class="catalog_main_category_link" href="#">Tanks</a>
@@ -50,31 +90,16 @@
           <summary class="catalog_main_summary">brand</summary>
           <ul>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Jackets &amp; Coats</a>
+              <a class="catalog_main_category_link" href="#" data-criterion="brand"
+                data-value="MANGO"  @click.prevent="setFilter($event.target)" >MANGO</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Pants</a>
+              <a class="catalog_main_category_link" href="#" data-criterion="brand"
+                data-value="OYSHO"  @click.prevent="setFilter($event.target)">OYSHO</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Polos</a>
-            </li>
-            <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Shirts</a>
-            </li>
-            <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Shoes</a>
-            </li>
-            <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Shorts</a>
-            </li>
-            <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Sweaters &amp; Knits</a>
-            </li>
-            <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">T-Shirts</a>
-            </li>
-            <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Tanks</a>
+              <a class="catalog_main_category_link" data-criterion="brand"
+                data-value="ZARA"  @click.prevent="setFilter($event.target)" href="#">ZARA</a>
             </li>
           </ul>
         </details>
@@ -82,13 +107,12 @@
           <summary class="catalog_main_summary">designer</summary>
           <ul>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Jackets &amp; Coats</a>
+              <a class="catalog_main_category_link" data-criterion="designer"
+                data-value="Jaime"  @click.prevent="setFilter($event.target)" href="#">Jaime</a>
             </li>
             <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Pants</a>
-            </li>
-            <li class="catalog_main_category">
-              <a class="catalog_main_category_link" href="#">Polos</a>
+              <a class="catalog_main_category_link" data-criterion="designer"
+                data-value="Bronn"  @click.prevent="setFilter($event.target)" href="#">Bronn</a>
             </li>
           </ul>
         </details>
@@ -188,9 +212,26 @@
 <script>
 import productsComp from "@/components/productsComp";
 export default {
+  data: () => ({
+    activeClass: "active"
+  }),
   components: {
     productsComp
   },
+  methods: {
+    setFilter(target) {
+      target.classList.toggle("active");
+      let payLoad = {
+        criterion: target.dataset.criterion,
+        value: [target.dataset.value]
+      };
+      if (target.classList.contains("active")) {
+        this.$store.commit("products/setFilter", payLoad);
+      } else {
+        this.$store.commit("products/unSetFilter", payLoad);
+      }
+    }
+  }
 };
 </script>
 
@@ -209,6 +250,11 @@ export default {
       &:hover {
         color: $color-site-active;
       }
+    }
+    .active {
+      color: $color-site-active;
+      font-size: 16px;
+      font-weight: bold;
     }
   }
   .filter {

@@ -1,45 +1,55 @@
 <template>
   <div>
     <div class="product__box center">
-      <div class="product" v-for="product of products" :key="product.id_product">
+      <div class="product" v-for="product of desired" :key="product.id_product">
         <nuxt-link no-prefetch :to="'/products/' + product.id_product">
           <img class="product__img" :src="product.product_image" alt="photo" />
         </nuxt-link>
         <div class="product__content">
-          <a href="#" class="product__name">Mango People T-shirt</a>
+          <a href="#" class="product__name">{{product.product_name}}</a>
           <p class="product__price">${{product.price}}</p>
         </div>
         <a href="#" class="product__add" @click.prevent="add_to_cart(product, $event)">Add to Cart</a>
       </div>
-        <div  v-if="isIndexPage" class="product__box__browse">
-          <nuxt-link no-prefetch class="product__box__browse__a" to="/products">
-            Browse All Product
-            <img class="product__box__browse__a__arrow" src="img/product_browse-arrow.png" alt />
-          </nuxt-link>
-        </div>
+      <div v-if="isIndexPage" class="product__box__browse">
+        <nuxt-link no-prefetch class="product__box__browse__a" to="/products">
+          Browse All Product
+          <img
+            class="product__box__browse__a__arrow"
+            src="img/product_browse-arrow.png"
+            alt
+          />
+        </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
-    isIndexPage: false
+    isIndexPage: false,
   }),
   computed: {
-    products() {
+    ...mapGetters({
+      products: "products/products",
+      filtered: "products/filtered"
+    }),
+    desired() {
+      const regexp = new RegExp(this.$store.getters["products/userSearch"]);
       if (this.isIndexPage === true) {
-        return this.$store.getters["products/products"].filter(
-          el => el.rating >= 5
-        );
+        return this.products
+          .filter(el => el.rating >= 5)
+          .filter(el => regexp.test(el.product_name));
       } else {
-        return this.$store.getters["products/products"];
+        return this.filtered.filter(el => regexp.test(el.product_name));
       }
-    }
+    },
   },
   methods: {
     add_to_cart(product) {
-      let n =1
-      this.$store.dispatch("cartComp/add", {product, n});
+      let n = 1;
+      this.$store.dispatch("cartComp/add", { product, n });
     }
   },
   mounted() {
@@ -68,6 +78,7 @@ export default {
   display: -ms-flexbox;
   display: flex;
   margin-left: calc(50% - 106px);
+  flex-basis: 100%;
 }
 
 .product__box__browse__a {
