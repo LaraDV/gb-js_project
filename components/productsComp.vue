@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="product__box center">
-      <div class="product" v-for="product of desired" :key="product.id_product">
+      <div class="product" v-for="product of filtered" :key="product.id_product">
         <nuxt-link no-prefetch :to="'/products/' + product.id_product">
           <img class="product__img" :src="product.product_image" alt="photo" />
         </nuxt-link>
@@ -9,7 +9,7 @@
           <a href="#" class="product__name">{{product.product_name}}</a>
           <p class="product__price">${{product.price}}</p>
         </div>
-        <a href="#" class="product__add" @click.prevent="add_to_cart(product, $event)">Add to Cart</a>
+        <a href="#" class="product__add" @click.prevent="add_to_cart(product)">Add to Cart</a>
       </div>
       <div v-if="isIndexPage" class="product__box__browse">
         <nuxt-link no-prefetch class="product__box__browse__a" to="/products">
@@ -28,23 +28,46 @@
 import { mapGetters } from "vuex";
 export default {
   data: () => ({
-    isIndexPage: false,
+    isIndexPage: false
   }),
+  methods: {},
   computed: {
     ...mapGetters({
       products: "products/products",
-      filtered: "products/filtered"
+      filterArr: "products/filterArr"
     }),
     desired() {
-      const regexp = new RegExp(this.$store.getters["products/userSearch"]);
-      if (this.isIndexPage === true) {
-        return this.products
-          .filter(el => el.rating >= 5)
-          .filter(el => regexp.test(el.product_name));
-      } else {
-        return this.filtered.filter(el => regexp.test(el.product_name));
-      }
+      const regexp = new RegExp(
+        this.$store.getters["products/userSearch"],
+        "i"
+      );
+      return this.products.filter(el => regexp.test(el.product_name));
     },
+    filtered(desired) {
+      if (this.isIndexPage === true) {
+        return this.desired.filter(el => el.rating >= 5);
+      }
+      if (this.filterArr.length === 0) {
+        return this.desired;
+      } else if (this.filterArr.length === 1) {
+        return this.desired.filter(el =>
+          this.filterArr[0].value.includes(el[this.filterArr[0].criterion])
+        );
+      } else if (this.filterArr.length === 2) {
+        return this.desired.filter(
+          el =>
+            this.filterArr[0].value.includes(el[this.filterArr[0].criterion]) &&
+            this.filterArr[1].value.includes(el[this.filterArr[1].criterion])
+        );
+      } else if (this.filterArr.length === 3) {
+        return this.desired.filter(
+          el =>
+            this.filterArr[0].value.includes(el[this.filterArr[0].criterion]) &&
+            this.filterArr[1].value.includes(el[this.filterArr[1].criterion]) &&
+            this.filterArr[2].value.includes(el[this.filterArr[2].criterion])
+        );
+      }
+    }
   },
   methods: {
     add_to_cart(product) {

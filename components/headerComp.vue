@@ -2,7 +2,7 @@
   <div>
     <header class="header center">
       <div class="header_left">
-        <nuxt-link to="/" class="logo">
+        <nuxt-link no-prefetch to="/" class="logo">
           <img class="logo_img" src="~/static/img/b.png" alt="logo" />BRAN
           <span class="logo_span">D</span>
         </nuxt-link>

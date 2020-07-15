@@ -1,6 +1,81 @@
 export const state = () => ({
   userSearch: '',
   filterArr: [],
+  categories: [{
+      "name": "Blazers",
+      "isActive": false
+    },
+    {
+      "name": "Dresses",
+      "isActive": false
+    },
+    {
+      "name": "Blouses",
+      "isActive": false
+    },
+    {
+      "name": "Hoodies & Sweatshirts",
+      "isActive": false
+    },
+    {
+      "name": "Jackets & Coats",
+      "isActive": false
+    },
+    {
+      "name": "Pants",
+      "isActive": false
+    },
+    {
+      "name": "Polos",
+      "isActive": false
+    },
+    {
+      "name": "T-Shirts",
+      "isActive": false
+    },
+    {
+      "name": "Shoes",
+      "isActive": false
+    },
+    {
+      "name": "Shorts",
+      "isActive": false
+    },
+    {
+      "name": "Sweaters & Knits",
+      "isActive": false
+    },
+    {
+      "name": "Shirts",
+      "isActive": false
+    },
+    {
+      "name": "Tanks",
+      "isActive": false
+    }
+  ],
+  brands: [{
+      "name": "ZARA",
+      "isActive": false
+    },
+    {
+      "name": "MANGO",
+      "isActive": false
+    },
+    {
+      "name": "OYSHO",
+      "isActive": false
+    }
+  ],
+  designers: [{
+      "name": "Jaime",
+      "isActive": false
+    },
+    {
+      "name": "Bronn",
+      "isActive": false
+    }
+  ],
   products: [{
       "id_product": 9,
       "product_name": "ZARA COAT",
@@ -165,6 +240,15 @@ export const mutations = {
       let find = state.filterArr.find(el => el.criterion === payLoad.criterion).value.find(el => el === payLoad.value[0])
       state.filterArr.find(el => el.criterion === payLoad.criterion).value.splice(state.filterArr.find(el => el.criterion === payLoad.criterion).value.indexOf(find), 1)
     }
+  },
+  toggleActive(state, payLoad) {
+    if (payLoad.criterion === "brand") {
+      state.brands.find(el => el.name === payLoad.value[0]).isActive = !state.brands.find(el => el.name === payLoad.value[0]).isActive
+    } else if (payLoad.criterion === "category") {
+      state.categories.find(el => el.name === payLoad.value[0]).isActive = !state.categories.find(el => el.name === payLoad.value[0]).isActive
+    } else if (payLoad.criterion === "designer") {
+      state.designers.find(el => el.name === payLoad.value[0]).isActive = !state.designers.find(el => el.name === payLoad.value[0]).isActive
+    }
   }
 }
 
@@ -178,21 +262,8 @@ export const actions = {
 export const getters = {
   userSearch: s => s.userSearch,
   products: s => s.products,
-  filtered: state => {
-    if (state.filterArr.length === 0) {
-      return state.products;
-    } else if (state.filterArr.length === 1) {
-      return state.products.filter(el =>
-        state.filterArr[0].value.includes(el[state.filterArr[0].criterion])
-      )
-    } else if (state.filterArr.length === 2) {
-      return state.products.filter(el =>
-        state.filterArr[0].value.includes(el[state.filterArr[0].criterion]) && state.filterArr[1].value.includes(el[state.filterArr[1].criterion])
-      )
-    } else if (state.filterArr.length === 3) {
-      return state.products.filter(el =>
-        state.filterArr[0].value.includes(el[state.filterArr[0].criterion]) && state.filterArr[1].value.includes(el[state.filterArr[1].criterion]) && state.filterArr[2].value.includes(el[state.filterArr[2].criterion])
-      )
-    }
-  },
+  filterArr: s => s.filterArr,
+  brands: s => s.brands,
+  categories: s => s.categories,
+  designers: s => s.designers
 }
