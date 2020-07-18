@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-  * {
+* {
   margin: 0;
   padding: 0;
 }
@@ -50,4 +50,28 @@ a {
   line-height: 45px;
   transition: all 0.25s;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 27px;
+  font-weight: 300;
+  color: rgba(34, 34, 34, 1);
+  text-align: center;
+  letter-spacing: 0.03em;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+  .logo_span {
+    font-weight: 900;
+    color: #f16d7f;
+  }
+
+  .logo_img {
+    margin-right: 13px;
+    transition: all 0.5s;
+  }
+  .logo_img:hover {
+      transform: rotate(360deg);
+    }
 </style>

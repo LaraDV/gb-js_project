@@ -42,6 +42,15 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    ['nuxt-fontawesome', {
+            component: 'fa',
+            imports: [
+              {
+                set: '@fortawesome/free-brands-svg-icons',
+                icons: ['faFacebookF', 'faTwitter', 'faLinkedinIn', 'faGooglePlusG', 'faPinterestP']
+              }
+            ]
+          }]
   ],
   styleResources: {
     scss: ['./assets/scss/*.scss']
@@ -61,5 +70,5 @@ export default {
     */
     extend (config, ctx) {
     }
-  }
+  },
 }

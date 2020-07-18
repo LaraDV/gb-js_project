@@ -216,7 +216,9 @@ export const state = () => ({
       "brand": "MANGO",
       "designer": "Bronn"
     }
-  ]
+  ],
+  perPage: 3,
+  pagination: {}
 })
 
 export const mutations = {
@@ -249,7 +251,23 @@ export const mutations = {
     } else if (payLoad.criterion === "designer") {
       state.designers.find(el => el.name === payLoad.value[0]).isActive = !state.designers.find(el => el.name === payLoad.value[0]).isActive
     }
+  },
+  paginator(state, currentPage) { //устанавливает startIndex, endIndex
+    console.log('paginator')
+    let startIndex = (currentPage - 1) * state.perPage,
+      endIndex = Math.min(startIndex + state.perPage - 1, state.products.length - 1);
+    let allPages = [];
+    for (let i = 1; i < Math.ceil(state.products.length / state.perPage) + 1; i++) {
+      allPages.push(i);
+    }
+    return state.pagination = {
+      currentPage: currentPage,
+      startIndex: startIndex,
+      endIndex: endIndex,
+      pages: allPages
+    }
   }
+
 }
 
 export const actions = {
@@ -265,5 +283,7 @@ export const getters = {
   filterArr: s => s.filterArr,
   brands: s => s.brands,
   categories: s => s.categories,
-  designers: s => s.designers
+  designers: s => s.designers,
+  collection: s => s.products.slice(s.pagination.startIndex, s.pagination.endIndex + 1),
+  pages: s => s.pagination.pages
 }

@@ -30,7 +30,7 @@
                 class="catalog_main_category_link"
                 data-criterion="brand"
                 :data-value="brand.name"
-                @click.prevent="setFilter($event.target);"
+                @click.prevent="setFilter($event.target)"
                 :class="{active: brand.isActive}"
               >{{brand.name}}</a>
             </li>
@@ -145,6 +145,29 @@
         <productsComp></productsComp>
       </div>
     </main>
+    <section style="display: flex; justify-content: space-between;" class="info_2 center">
+      <article class="info_2__art">
+        <img class="badge_img" src="img/delivery.png" alt />
+        <h2 class="info__block__detail_h2">Free Delivery</h2>
+        <p
+          class="info__block__detail_p"
+        >Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+      </article>
+      <article class="info_2__art">
+        <img class="badge_img" src="img/delivery.png" alt />
+        <h2 class="info__block__detail_h2">Free Delivery</h2>
+        <p
+          class="info__block__detail_p"
+        >Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+      </article>
+      <article class="info_2__art">
+        <img class="badge_img" src="img/delivery.png" alt />
+        <h2 class="info__block__detail_h2">Free Delivery</h2>
+        <p
+          class="info__block__detail_p"
+        >Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+      </article>
+    </section>
   </div>
 </template>
 
@@ -352,6 +375,28 @@ export default {
         }
       }
     }
+  }
+}
+.info__block__detail_p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #fbfbfb;
+  letter-spacing: 0.03em;
+  line-height: 24px;
+}
+.info__block__detail_h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fbfbfb;
+  letter-spacing: 0.03em;
+  margin-bottom: 11px;
+}
+.info_2 {
+  background-color: #222224;
+  height: 341px;
+  align-items: center;
+  &_2__art {
+    width: 310px;
   }
 }
 </style>
