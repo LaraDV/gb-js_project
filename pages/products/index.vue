@@ -1,5 +1,6 @@
 <template>
   <div>
+    <breadcrumbsComp></breadcrumbsComp>
     <main class="catalog_main center">
       <div class="filter">
         <details class="product_details" open>
@@ -136,9 +137,11 @@
               class="sotring_legend"
               style="display: flex;align-items: center;background-color: white;height: 28px;padding: 0 13px;border: 1px solid #e6e6e6;"
             >Show</p>
-            <select class="sorting_select" style="border: none;border: 1px solid #e6e6e6;">
-              <option class="sorting_option">6</option>
-              <option class="sorting_option">12</option>
+            <select class="sorting_select" style="border: none;border: 1px solid #e6e6e6;" v-model="perPage" @change="selectPerP($event)">
+              <option class="sorting_option" value="3">3</option>
+              <option class="sorting_option" value="6">6</option>
+              <option class="sorting_option" value="9">9</option>
+              <option class="sorting_option" value="12">12</option>
             </select>
           </div>
         </div>
@@ -173,11 +176,13 @@
 
 <script>
 import productsComp from "@/components/productsComp";
+import breadcrumbsComp from "@/components/breadcrumbsComp";
 import { mapGetters } from "vuex";
 export default {
   data: () => ({}),
   components: {
-    productsComp
+    productsComp,
+    breadcrumbsComp
   },
   methods: {
     setFilter(target) {
@@ -192,13 +197,18 @@ export default {
       } else {
         this.$store.commit("products/setFilter", payLoad);
       }
+    },
+    selectPerP(event){
+      let perP = parseInt(event.target.value)
+      this.$store.dispatch("products/changePerP", perP);
     }
   },
   computed: {
     ...mapGetters({
       brands: "products/brands",
       categories: "products/categories",
-      designers: "products/designers"
+      designers: "products/designers",
+      perPage: "products/perPage"
     })
   }
 };

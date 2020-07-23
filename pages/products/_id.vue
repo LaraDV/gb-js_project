@@ -66,6 +66,21 @@
       </div>
     </main>
     <h2 style="display: none">{{totalSumm}}</h2>
+    <h2
+      style="font-size: 24px; text-transform: uppercase; color: #4d4d4d; font-weight: 900; text-align: center; margin-top: 119px;"
+    >you may like also</h2>
+    <section class="you__may_like_box center">
+      <div class="product" v-for="product of yml_products" :key="product.id_product">
+        <nuxt-link no-prefetch :to="'/products/' + product.id_product">
+          <img class="product__img" :src="product.product_image" alt="photo" />
+        </nuxt-link>
+        <div class="product__content">
+          <a href="#" class="product__name">{{product.product_name}}</a>
+          <p class="product__price">${{product.price}}</p>
+          <a href="#" class="product__add" @click.prevent="$store.dispatch('cartComp/add', { product})">Add to Cart</a>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -82,13 +97,14 @@ export default {
     },
     totalSumm() {
       return this.$store.getters["cartComp/totalSumm"];
+    },
+    yml_products() {
+      return this.$store.getters["products/yml_products"];
     }
   },
   methods: {
     add_to_cart(product) {
       let n = Number(document.getElementById("QUANTITY").value);
-      document.getElementById("QUANTITY").value = "1";
-      alert("товар добавлен в корзину");
       this.$store.dispatch("cartComp/add", { product, n });
     }
   }
@@ -260,6 +276,77 @@ export default {
         background-color: $color-site-active;
         color: white;
       }
+    }
+  }
+}
+.you__may_like_box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 72px;
+  .yml__a {
+    display: block;
+    width: 261px;
+    height: 280px;
+    overflow: hidden;
+    background-color: #e9e9e9;
+    text-align: center;
+  }
+}
+.product {
+  width: 261px;
+  position: relative;
+  margin-bottom: 40px;
+  transition: all 0.5s;
+  &:hover {
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.16);
+    transform: scale(1.05) translate(0, -3.3%);
+    z-index: 1;
+  }
+  &:hover .product__img {
+    filter: brightness(40%);
+  }
+  &:hover .product__add {
+    display: flex;
+  }
+
+  &__name {
+    font-size: 13px;
+    color: #222222;
+    text-align: center;
+    text-transform: uppercase;
+    &:hover {
+      color: $color-site-active;
+      font-weight: bold;
+    }
+  }
+
+  &__price {
+    font-size: 16px;
+    font-weight: bold;
+    color: $color-site-active;
+    text-transform: uppercase;
+    margin-top: 15px;
+  }
+
+  &__content {
+    padding: 19px 15px;
+  }
+
+  &__add {
+    position: absolute;
+    top: 97px;
+    left: 70px;
+    height: 39px;
+    width: 123px;
+    border: 1px solid #ffffff;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    &:hover {
+      box-shadow: 0 0 5px #fff;
     }
   }
 }

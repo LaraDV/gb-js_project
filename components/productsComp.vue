@@ -22,14 +22,28 @@
         </nuxt-link>
       </div>
       <nav v-if="!isIndexPage" class="product-page-nav">
-          <div class="pages">
-            <a href class="page">&lsaquo;</a>
-            <a href="#" class="page" v-for="p in pages" :key="p" @click="setPage(p, $event)">{{p}}</a>
-            <a href class="page">6...20</a>
-            <a href class="page">&rsaquo;</a>
-          </div>
-          <a class="check_ok pages_check_ok" href>View All</a>
-        </nav>
+        <div class="pages">
+          <a
+            href
+            class="page"
+            @click.prevent="changePage(pages.find(el => el.isActive === true).pageNumber-1)"
+          >&lsaquo;</a>
+          <a
+            href="#"
+            class="page"
+            v-for="p in pages"
+            :key="p.pageNumber"
+            @click.prevent="setPage(p.pageNumber, $event)"
+            :class="{active: p.isActive}"
+          >{{p.pageNumber}}</a>
+          <a
+            href="#"
+            class="page"
+            @click.prevent="changePage(pages.find(el => el.isActive === true).pageNumber+1)"
+          >&rsaquo;</a>
+        </div>
+        <a class="check_ok pages_check_ok" href>View All</a>
+      </nav>
     </div>
   </div>
 </template>
@@ -37,9 +51,7 @@
 import { mapGetters } from "vuex";
 export default {
   data: () => ({
-    isIndexPage: false,
-    // perPage: 3,
-    // pagination:{}
+    isIndexPage: false
   }),
   methods: {},
   computed: {
@@ -54,9 +66,9 @@ export default {
         this.$store.getters["products/userSearch"],
         "i"
       );
-      if(this.isIndexPage){
+      if (this.isIndexPage) {
         return this.products.filter(el => regexp.test(el.product_name));
-      }else{
+      } else {
         return this.collection.filter(el => regexp.test(el.product_name));
       }
     },
@@ -84,59 +96,38 @@ export default {
             this.filterArr[2].value.includes(el[this.filterArr[2].criterion])
         );
       }
-    },
-    // collection(){
-    //   return this.paginate(this.desired)
-    // },
+    }
   },
   methods: {
     add_to_cart(product) {
-      console.log(this.pagination)
+      console.log(this.pagination);
       let n = 1;
       this.$store.dispatch("cartComp/add", { product, n });
     },
-    setPage(p, event=0) {
-      if (event != 0){
-        // event.target.classList.add("active")
-        // event.target.parentElement.children[this.pagination.currentPage].classList.remove("active");
-      }
-      // this.pagination = this.paginator(this.desired.length, p)
+    setPage(p) {
       this.$store.commit("products/paginator", p);
     },
-    // paginate(data) {//возрващает массив/коллекцию элементов с индексами соответствующими текущей странице
-    //   // return _.slice(data, this.pagination.startIndex, this.pagination.endIndex + 1)
-    //   console.log(data.slice(this.pagination.startIndex, this.pagination.endIndex + 1))
-    //   return data.slice(this.pagination.startIndex, this.pagination.endIndex + 1);
-    // },
-    // paginator(totalItems, currentPage){//устанавливает startIndex, endIndex
-    //   console.log('paginator')
-    //   let startIndex = (currentPage - 1) * this.perPage,
-    //   endIndex = Math.min(startIndex + this.perPage - 1, totalItems - 1);
-    //   let allPages = [];
-    //   for(let i=1; i<Math.ceil(totalItems/this.perPage)+1; i++){
-    //     allPages.push(i);
-    //   }
-    //   return {
-    //     currentPage: currentPage,
-    //     startIndex: startIndex,
-    //     endIndex: endIndex,
-    //     pages: allPages
-    //   }
-    // }
+    changePage(p) {
+      if (p < 1) {
+        p = 1;
+      } else if (p > this.pages.length) {
+        p = this.pages.length;
+      }
+      this.$store.commit("products/paginator", p);
+    }
   },
   mounted() {
     if (this.$parent.$el.id === "index") {
       return (this.isIndexPage = true);
     }
   },
-  created(){
+  created() {
     this.setPage(1);
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
 .product__box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -265,53 +256,56 @@ export default {
   -webkit-box-shadow: 0 0 5px #fff;
   box-shadow: 0 0 5px #fff;
 }
-.product-page-nav{
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 110px;
-            .pages{
-                height: 44px;
-                width: 261px;
-                background-color: #ffffff;
-                border: 1px solid #ebebeb;
-                border-radius: 3px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 8px;
-                box-sizing: border-box;
-                &_check_ok{
-                    height: 42px;
-                    width: 148px;
-                    font-size: 16px;
-                    text-transform: lowercase;
-                    color: #ef5b70;
-                    border: 1px solid #ef5b70;
-                    &:hover{
-                        color: white;
-                        background-color: $color-site-active;
-                    }
-                }
-                .page{
-                    padding: 0 7px;
-                    font-size: 16px;
-                    font-weight: 300;
-                    color: #c4c4c4;
-                    &:hover{
-                        color: $color-site-active;
-                    }
-                    &:first-child,&:last-child{ /*может лучше картинку добавить*/
-                        font-size: 32px;
-                        padding-bottom: 6px;
-                    }
-                    &:last-child,&:nth-child(2){
-                        color: #ef5b70;
-                    }
-                }
-                .active{
-                  color: $color-site-active;
-                  font-weight: bold;
-                }
-            }
-        }
+.product-page-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 110px;
+  flex-basis: 100%;
+  .pages {
+    height: 44px;
+    width: 261px;
+    background-color: #ffffff;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    box-sizing: border-box;
+    &_check_ok {
+      height: 42px;
+      width: 148px;
+      font-size: 16px;
+      text-transform: lowercase;
+      color: #ef5b70;
+      border: 1px solid #ef5b70;
+      &:hover {
+        color: white;
+        background-color: $color-site-active;
+      }
+    }
+    .page {
+      padding: 0 7px;
+      font-size: 16px;
+      font-weight: 300;
+      color: #c4c4c4;
+      &:hover {
+        color: $color-site-active;
+      }
+      &:first-child,
+      &:last-child {
+        /*может лучше картинку добавить*/
+        font-size: 32px;
+        padding-bottom: 6px;
+      }
+      &:last-child {
+        color: #ef5b70;
+      }
+    }
+    .active {
+      color: $color-site-active;
+      font-weight: bold;
+    }
+  }
+}
 </style>

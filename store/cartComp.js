@@ -16,6 +16,12 @@ export const mutations = {
   removeProduct(state, find) {
     state.cartItems.splice(state.cartItems.indexOf(find), 1);
     state.totalSumm -= find.price
+  },
+  clear(state){
+    return state.cartItems = [];
+  },
+  clearTotalSumm(state){
+    return state.totalSumm = 0;
   }
 }
 
@@ -23,7 +29,7 @@ export const actions = {
   add({
     commit,
     state
-  }, {product, n}) {
+  }, {product, n=1}) {
     console.log(state.cartItems)
     let find = state.cartItems.find(el => el.id_product === product.id_product);
     if (find) {
@@ -44,9 +50,12 @@ export const actions = {
     } else {
       commit('removeProduct', find)
     }
+  },
+  clearCart({commit}){
+    commit('clear');
+    commit('clearTotalSumm');
   }
 }
-///Поставить везде item, кнопку инпута сделать v-model/кнопка отправить должна вызывать функцию-это на странице товара
 export const getters = {
   cartItems: s => s.cartItems,
   totalSumm: s => s.totalSumm
