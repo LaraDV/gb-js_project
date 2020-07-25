@@ -61,46 +61,46 @@
     </div>
     <productsComp></productsComp>
     <section class="sale center">
-      <div class="sale__offer">
-        <div class="sale__offer__content">
-          <h1 class="sale__offer__content__h1">
+      <div class="sale_offer">
+        <div class="sale_offer_content">
+          <h1 class="sale_offer_content_h1">
             30%
-            <span class="sale__offer__content__h1__color">OFFER</span>
+            <span class="sale_offer_content_h1_color">OFFER</span>
           </h1>
-          <h2 class="sale__offer__content__h2">FOR WOMEN</h2>
+          <h2 class="sale_offer_content_h2">FOR WOMEN</h2>
         </div>
       </div>
       <div class="info">
-        <article class="info__block">
+        <article class="info_block">
           <div class="badge">
             <img class="badge_img" src="~/static/img/delivery.png" alt />
           </div>
-          <div class="info__block__detail">
-            <h2 class="info__block__detail_h2">Free Delivery</h2>
+          <div class="info_block_detail">
+            <h2 class="info_block_detail_h2">Free Delivery</h2>
             <p
-              class="info__block__detail_p"
+              class="info_block_detail_p"
             >Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
           </div>
         </article>
-        <article class="info__block">
+        <article class="info_block">
           <div class="badge">
             <img class="badge_img" src="~/static/img/sales.png" alt />
           </div>
-          <div class="info__block__detail">
-            <h2 class="info__block__detail_h2">Sales &amp; discounts</h2>
+          <div class="info_block_detail">
+            <h2 class="info_block_detail_h2">Sales &amp; discounts</h2>
             <p
-              class="info__block__detail_p"
+              class="info_block_detail_p"
             >Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
           </div>
         </article>
-        <article class="info__block">
+        <article class="info_block">
           <div class="badge">
             <img class="badge_img" src="~/static/img/Quality.png" alt />
           </div>
-          <div class="info__block__detail">
-            <h2 class="info__block__detail_h2">Quality assurance</h2>
+          <div class="info_block_detail">
+            <h2 class="info_block_detail_h2">Quality assurance</h2>
             <p
-              class="info__block__detail_p"
+              class="info_block_detail_p"
             >Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
           </div>
         </article>
@@ -207,23 +207,24 @@ export default {
   height: 529px;
   display: flex;
   margin-top: 113px;
-  &__offer {
+  margin-bottom: 97px;
+  &_offer {
     width: 767px;
     height: 529px;
     background-image: url(../static/img/sale.png), url(../static/img/sale.jpeg);
-    &__content {
+    &_content {
       margin-top: 146px;
       margin-left: 39px;
-      &__h1 {
+      &_h1 {
         font-size: 54px;
         font-weight: bold;
         color: #ffffff;
         letter-spacing: 0.03em;
-        &__color {
+        &_color {
           color: $color-site-active;
         }
       }
-      &__h2 {
+      &_h2 {
         font-size: 32px;
         font-weight: bold;
         color: #ffffff;
@@ -236,14 +237,14 @@ export default {
 .info {
   width: 373px;
   background-color: #222224;
-  &__block {
+  &_block {
     margin-top: 48px;
     margin-left: 31.97px;
     width: 319.95px;
     height: 102px;
     display: flex;
     justify-content: space-between;
-    &__detail {
+    &_detail {
       width: 236.06px;
       display: flex;
       flex-direction: column;

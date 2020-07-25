@@ -60,19 +60,19 @@
             <p class="footer_menu_heading">COMPANY</p>
             <ul>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Home</nuxt-link>
+                <nuxt-link no-prefetch="" class="footer_menu_link" to="/">Home</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Shop</nuxt-link>
+                <nuxt-link no-prefetch="" class="footer_menu_link" to="/products">Shop</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">About</nuxt-link>
+                <nuxt-link no-prefetch="" class="footer_menu_link" to="/checkout">About</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">How It Works</nuxt-link>
+                <nuxt-link no-prefetch="" class="footer_menu_link" to="/checkout">How It Works</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Contact</nuxt-link>
+                <nuxt-link no-prefetch="" class="footer_menu_link" to="/checkout">Contact</nuxt-link>
               </li>
             </ul>
           </div>
@@ -80,19 +80,19 @@
             <p class="footer_menu_heading">INFORMATION</p>
             <ul>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Tearms &amp; Condition</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="checkout">Tearms &amp; Condition</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Privacy Policy</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="checkout">Privacy Policy</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">How to Buy</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="checkout">How to Buy</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">How to Sell</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="checkout">How to Sell</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Promotion</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="checkout">Promotion</nuxt-link>
               </li>
             </ul>
           </div>
@@ -100,19 +100,19 @@
             <p class="footer_menu_heading">SHOP CATEGORY</p>
             <ul>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Men</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="/products">Men</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Women</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="/products">Women</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Child</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="/products">Child</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Apparel</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="/products">Apparel</nuxt-link>
               </li>
               <li class="footer_menu_list">
-                <nuxt-link class="footer_menu_link" to="#">Browse All</nuxt-link>
+                <nuxt-link no-prefetch class="footer_menu_link" to="/products">Browse All</nuxt-link>
               </li>
             </ul>
           </div>
@@ -148,7 +148,6 @@
 
 <style lang="scss" scoped>
 .subscribe {
-  margin-top: 97px;
   margin-bottom: 109px;
   background-color: #f2f2f2;
   height: 437px;
@@ -313,6 +312,7 @@
           text-align: left;
           .footer_menu_link {
             color: #898989;
+            display: block;
           }
           :hover {
             color: $color-site-active;

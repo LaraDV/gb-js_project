@@ -93,69 +93,40 @@
     <div class="nav center">
       <ul class="menu">
         <li class="menu_list">
-          <nuxt-link class="menu_link" to="/">Home</nuxt-link>
+          <nuxt-link no-prefetch class="menu_link" to="/">Home</nuxt-link>
         </li>
         <li class="menu_list">
-          <nuxt-link class="menu_link" to="#">Man</nuxt-link>
+          <nuxt-link no-prefetch class="menu_link" to="/products">Man</nuxt-link>
           <div class="drop">
             <div class="drop__flex">
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
                   <nuxt-link no-prefetch class="drop__link" to="/products">Jackets/Coats</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Blazers</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Denim</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Denim</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Leggings/Pants</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Leggings/Pants</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Accessories</nuxt-link>
-                </li>
-              </ul>
-            </div>
-            <div class="drop__flex">
-              <h3 class="drop__h3">Women</h3>
-              <ul class="drop__ul">
-                <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
-                </li>
-              </ul>
-              <h3 class="drop__h3">Women</h3>
-              <ul class="drop__ul">
-                <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Accessories</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -163,6 +134,21 @@
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Jackets/Coats</nuxt-link>
+                </li>
+              </ul>
+              <h3 class="drop__h3">Women</h3>
+              <ul class="drop__ul">
+                <li>
                   <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
@@ -171,8 +157,22 @@
                 <li>
                   <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
+              </ul>
+            </div>
+            <div class="drop__flex">
+              <h3 class="drop__h3">Women</h3>
+              <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
               </ul>
               <nuxt-link to="#" class="drop_stock">
@@ -195,31 +195,31 @@
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Blazers</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Denim</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Denim</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Leggings/Pants</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Leggings/Pants</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Accessories</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Accessories</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -227,71 +227,71 @@
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
               </ul>
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
               </ul>
             </div>
           </div>
         </li>
         <li class="menu_list">
-          <nuxt-link class="menu_link" to="/products">Accoseriese</nuxt-link>
+          <nuxt-link no-prefetch class="menu_link" to="/products">Accoseriese</nuxt-link>
         </li>
         <li class="menu_list">
-          <nuxt-link class="menu_link" to="/products">Featured</nuxt-link>
+          <nuxt-link no-prefetch class="menu_link" to="/products">Featured</nuxt-link>
         </li>
         <li class="menu_list">
-          <nuxt-link class="menu_link" to="/products">Hot Deals</nuxt-link>
+          <nuxt-link no-prefetch class="menu_link" to="/products">Hot Deals</nuxt-link>
           <div class="drop drop_last">
             <div class="drop__flex">
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Blazers</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Blazers</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Denim</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Denim</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Leggings/Pants</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Leggings/Pants</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Skirts/Shorts</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Accessories</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Accessories</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -299,28 +299,28 @@
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Jackets/Coats</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Jackets/Coats</nuxt-link>
                 </li>
               </ul>
               <h3 class="drop__h3">Women</h3>
               <ul class="drop__ul">
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Dresses</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Dresses</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Tops</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Tops</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
+                  <nuxt-link no-prefetch to="/products" class="drop__link">Sweaters/Knits</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -525,6 +525,7 @@ export default {
     color: #646464;
     letter-spacing: 0.03em;
     line-height: 28px;
+    display: block;
     &:hover {
       color: $color-site-active;
     }

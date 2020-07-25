@@ -257,52 +257,56 @@ export const state = () => ({
       "designer": "Bronn"
     }
   ],
-  yml_products:[{
-    "id_product": 18,
-    "product_name": "BLAZE LEGGINGS",
-    "product_image": "/img/yml1.png",
-    "category": "Pants",
-    "price": 52,
-    "rating": 4,
-    "brand": "ZARA",
-    "designer": "Bronn"
-  },
-  {
-    "id_product": 19,
-    "product_name": "ALEXA SWEATER",
-    "product_image": "/img/yml2.png",
-    "category": "Sweaters & Knits",
-    "price": 52,
-    "rating": 4,
-    "brand": "ZARA",
-    "designer": "Jaime"
-  },
-  {
-    "id_product": 20,
-    "product_name": "AGNES TOP",
-    "product_image": "/img/yml3.png",
-    "category": "Blouses",
-    "rating": 4,
-    "brand": "MANGO",
-    "designer": "Jaime"
-  },
-  {
-    "id_product": 21,
-    "product_name": "SYLVA SWEATER",
-    "product_image": "/img/yml4.png",
-    "category": "Sweaters & Knits",
-    "price": 104,
-    "rating": 4,
-    "brand": "ZARA",
-    "designer": "Bronn"
-  }],
+  yml_products: [{
+      "id_product": 18,
+      "product_name": "BLAZE LEGGINGS",
+      "product_image": "/img/yml1.png",
+      "category": "Pants",
+      "price": 52,
+      "rating": 4,
+      "brand": "ZARA",
+      "designer": "Bronn"
+    },
+    {
+      "id_product": 19,
+      "product_name": "ALEXA SWEATER",
+      "product_image": "/img/yml2.png",
+      "category": "Sweaters & Knits",
+      "price": 52,
+      "rating": 4,
+      "brand": "ZARA",
+      "designer": "Jaime"
+    },
+    {
+      "id_product": 20,
+      "product_name": "AGNES TOP",
+      "product_image": "/img/yml3.png",
+      "category": "Blouses",
+      "rating": 4,
+      "price": 104,
+      "brand": "MANGO",
+      "designer": "Jaime"
+    },
+    {
+      "id_product": 21,
+      "product_name": "SYLVA SWEATER",
+      "product_image": "/img/yml4.png",
+      "category": "Sweaters & Knits",
+      "price": 104,
+      "rating": 4,
+      "brand": "ZARA",
+      "designer": "Bronn"
+    }
+  ],
+  filtered: [],
   perPage: 9,
   pagination: {}
 })
 
 export const mutations = {
   setSearch(state, search) {
-    state.userSearch = search
+    state.userSearch = search;
+    state.pagination.currentPage = 1;
   },
   setFilter(state, payLoad) {
     let find = state.filterArr.find(el => el.criterion === payLoad.criterion);
@@ -331,20 +335,47 @@ export const mutations = {
       state.designers.find(el => el.name === payLoad.value[0]).isActive = !state.designers.find(el => el.name === payLoad.value[0]).isActive
     }
   },
-  changePP(state, perP){// меняем количество элементов товара на странице
+  setFiltered(state) {//формируем массив отфильтрованных товаров
+    const regexp = new RegExp(
+      `${state.userSearch}`,
+      "i"
+    );
+    if (state.filterArr.length === 0) {
+      return state.filtered = state.products.filter((el) => regexp.test(el.product_name));
+    } else if (state.filterArr.length === 1) {
+      return state.filtered = state.products.filter(el =>
+        state.filterArr[0].value.includes(el[state.filterArr[0].criterion])
+      ).filter((el) => regexp.test(el.product_name));
+    } else if (state.filterArr.length === 2) {
+      return state.filtered = state.products.filter(el =>
+        state.filterArr[0].value.includes(el[state.filterArr[0].criterion]) && state.filterArr[1].value.includes(el[state.filterArr[1].criterion])
+      ).filter((el) => regexp.test(el.product_name));
+    } else if (state.filterArr.length === 3) {
+      return state.filtered = state.products.filter(el =>
+        state.filterArr[0].value.includes(el[state.filterArr[0].criterion]) && state.filterArr[1].value.includes(el[state.filterArr[1].criterion]) && state.filterArr[2].value.includes(el[state.filterArr[2].criterion])
+      ).filter((el) => regexp.test(el.product_name));
+    }
+  },
+  changePP(state, perP) { // меняем количество элементов товара на странице
     return state.perPage = perP;
   },
-  paginator(state, currentPage=1) { //устанавливаем startIndex, endIndex для paginartion + задаем свойство isActive true объекту активной страницы, остальным  - false
+  paginator(state, currentPage) { //устанавливаем startIndex, endIndex для paginartion + задаем свойство isActive true объекту активной страницы, остальным  - false
     console.log('paginator')
     let startIndex = (currentPage - 1) * state.perPage,
-      endIndex = Math.min(startIndex + state.perPage - 1, state.products.length - 1);
+      endIndex = Math.min(startIndex + state.perPage - 1, state.filtered.length - 1);
     let allPages = [];
-    for (let i = 1; i < Math.ceil(state.products.length / state.perPage) + 1; i++) {
+    for (let i = 1; i < Math.ceil(state.filtered.length / state.perPage) + 1; i++) {
       if (i === currentPage)
-      allPages.push({pageNumber: i, isActive: true})
-        else{
-          allPages.push({pageNumber: i, isActive: false})
-        }
+        allPages.push({
+          pageNumber: i,
+          isActive: true
+        })
+      else {
+        allPages.push({
+          pageNumber: i,
+          isActive: false
+        })
+      }
     }
     return state.pagination = {
       currentPage: currentPage,
@@ -357,13 +388,18 @@ export const mutations = {
 
 export const actions = {
   setSearch({
-    commit
+    commit,
+    state
   }, search) {
-    commit('setSearch', search)
+    commit('setSearch', search);
+    commit("setFiltered"); // собираем массив state.filtered в согласно state.userSearch (поиску)
+    commit("paginator", 1); // собираем заново пагинацию указываем активной 1ую страницу
   },
-  changePerP({commit},perP){
-    commit('changePP', perP);
-    commit('paginator')
+  changePerP({
+    commit
+  }, perP) {
+    commit('changePP', perP); // меняем количество отображаемых товаров на странице (state.perPage)
+    commit('paginator', 1) // собираем заново пагинацию указываем активной 1ую страницу
   }
 }
 export const getters = {
@@ -373,8 +409,8 @@ export const getters = {
   brands: s => s.brands,
   categories: s => s.categories,
   designers: s => s.designers,
-  collection: s => s.products.slice(s.pagination.startIndex, s.pagination.endIndex + 1),
+  collection: s => s.filtered.slice(s.pagination.startIndex, s.pagination.endIndex + 1),
   pages: s => s.pagination.pages,
   perPage: s => s.perPage,
-  yml_products: s => s.yml_products
+  yml_products: s => s.yml_products,
 }

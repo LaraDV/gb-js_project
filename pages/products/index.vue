@@ -186,21 +186,22 @@ export default {
   },
   methods: {
     setFilter(target) {
-      // target.classList.toggle("active");
       let payLoad = {
         criterion: target.dataset.criterion,
         value: [target.dataset.value]
       };
-      this.$store.commit("products/toggleActive", payLoad);
-      if (target.classList.contains("active")) {
+      this.$store.commit("products/toggleActive", payLoad);//задаст isActive true/false в выбранном элементе категории/бренда/дизайнера добавится класс active
+      if (target.classList.contains("active")) {//если товар, дизайнер или бренд уже активен(розовый,bold), то повторное нажатие вызывает unSetFilter
         this.$store.commit("products/unSetFilter", payLoad);
       } else {
         this.$store.commit("products/setFilter", payLoad);
       }
+      this.$store.commit("products/setFiltered");//вызываем для формирования массива state.filtered, в соответсвии с новым фильтром state.filterArr
+      this.$store.commit("products/paginator", 1);//вызываем, чтобы пагинация собралась в соотвествии с новым массивом state.filtered и указываем 1ую страницу
     },
     selectPerP(event){
       let perP = parseInt(event.target.value)
-      this.$store.dispatch("products/changePerP", perP);
+      this.$store.dispatch("products/changePerP", perP);//устанавливаем количество товаров для "отрисовки" на странице
     }
   },
   computed: {

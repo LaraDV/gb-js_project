@@ -30,7 +30,7 @@
           <h2 class="basket__h2">$ {{totalSumm}}</h2>
         </div>
         <div class="selectPr">
-          <a href="checkout.html" class="check_ok basket_check_ok">Checkout</a>
+          <nuxt-link no-prefetch to="/checkout" class="check_ok basket_check_ok">Checkout</nuxt-link>
           <nuxt-link no-prefetch
             to="/shoppingCart"
             class="check_ok basket_check_ok"

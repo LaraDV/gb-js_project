@@ -1,49 +1,54 @@
 <template>
   <div>
-    <div class="product__box center">
-      <div class="product" v-for="product of filtered" :key="product.id_product">
-        <nuxt-link no-prefetch :to="'/products/' + product.id_product">
-          <img class="product__img" :src="product.product_image" alt="photo" />
-        </nuxt-link>
-        <div class="product__content">
-          <a href="#" class="product__name">{{product.product_name}}</a>
-          <p class="product__price">${{product.price}}</p>
+    <div>
+      <div v-if="desired.length!=0" class="product_box center">
+        <div class="product" v-for="product of desired" :key="product.id_product">
+          <nuxt-link no-prefetch :to="'/products/' + product.id_product">
+            <img class="product_img" :src="product.product_image" alt="photo" />
+          </nuxt-link>
+          <div class="product_content">
+            <a href="#" class="product_name">{{product.product_name}}</a>
+            <p class="product_price">${{product.price}}</p>
+          </div>
+          <a href="#" class="product_add" @click.prevent="add_to_cart(product)">Add to Cart</a>
         </div>
-        <a href="#" class="product__add" @click.prevent="add_to_cart(product)">Add to Cart</a>
-      </div>
-      <div v-if="isIndexPage" class="product__box__browse">
-        <nuxt-link no-prefetch class="product__box__browse__a" to="/products">
-          Browse All Product
-          <img
-            class="product__box__browse__a__arrow"
-            src="img/product_browse-arrow.png"
-            alt
-          />
-        </nuxt-link>
-      </div>
-      <nav v-if="!isIndexPage" class="product-page-nav">
-        <div class="pages">
-          <a
-            href
-            class="page"
-            @click.prevent="changePage(pages.find(el => el.isActive === true).pageNumber-1)"
-          >&lsaquo;</a>
-          <a
-            href="#"
-            class="page"
-            v-for="p in pages"
-            :key="p.pageNumber"
-            @click.prevent="setPage(p.pageNumber, $event)"
-            :class="{active: p.isActive}"
-          >{{p.pageNumber}}</a>
-          <a
-            href="#"
-            class="page"
-            @click.prevent="changePage(pages.find(el => el.isActive === true).pageNumber+1)"
-          >&rsaquo;</a>
+        <div v-if="isIndexPage" class="product_box_browse">
+          <nuxt-link no-prefetch class="product_box_browse_a" to="/products">
+            Browse All Product
+            <img
+              class="product_box_browse_a_arrow"
+              src="img/product_browse-arrow.png"
+              alt
+            />
+          </nuxt-link>
         </div>
-        <a class="check_ok pages_check_ok" href>View All</a>
-      </nav>
+        <nav v-if="!isIndexPage" class="product-page-nav">
+          <div class="pages">
+            <a
+              href
+              class="page"
+              @click.prevent="changePage(pages.find(el => el.isActive === true).pageNumber-1)"
+            >&lsaquo;</a>
+            <a
+              href="#"
+              class="page"
+              v-for="p in pages"
+              :key="p.pageNumber"
+              @click.prevent="setPage(p.pageNumber, $event)"
+              :class="{active: p.isActive}"
+            >{{p.pageNumber}}</a>
+            <a
+              href="#"
+              class="page"
+              @click.prevent="changePage(pages.find(el => el.isActive === true).pageNumber+1)"
+            >&rsaquo;</a>
+          </div>
+          <a href="#" class="check_ok pages_check_ok">View All</a>
+        </nav>
+      </div>
+      <div v-else class="center">
+        <p>Вещи, соответствующие заданным критериям, не найдены.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -51,7 +56,7 @@
 import { mapGetters } from "vuex";
 export default {
   data: () => ({
-    isIndexPage: false
+    isIndexPage: false,
   }),
   methods: {},
   computed: {
@@ -67,36 +72,13 @@ export default {
         "i"
       );
       if (this.isIndexPage) {
-        return this.products.filter(el => regexp.test(el.product_name));
+        return this.products
+          .filter((el) => el.rating >= 5)
+          .filter((el) => regexp.test(el.product_name));
       } else {
-        return this.collection.filter(el => regexp.test(el.product_name));
+        return this.collection;
       }
     },
-    filtered(desired) {
-      if (this.isIndexPage === true) {
-        return this.desired.filter(el => el.rating >= 5);
-      }
-      if (this.filterArr.length === 0) {
-        return this.desired;
-      } else if (this.filterArr.length === 1) {
-        return this.desired.filter(el =>
-          this.filterArr[0].value.includes(el[this.filterArr[0].criterion])
-        );
-      } else if (this.filterArr.length === 2) {
-        return this.desired.filter(
-          el =>
-            this.filterArr[0].value.includes(el[this.filterArr[0].criterion]) &&
-            this.filterArr[1].value.includes(el[this.filterArr[1].criterion])
-        );
-      } else if (this.filterArr.length === 3) {
-        return this.desired.filter(
-          el =>
-            this.filterArr[0].value.includes(el[this.filterArr[0].criterion]) &&
-            this.filterArr[1].value.includes(el[this.filterArr[1].criterion]) &&
-            this.filterArr[2].value.includes(el[this.filterArr[2].criterion])
-        );
-      }
-    }
   },
   methods: {
     add_to_cart(product) {
@@ -114,7 +96,7 @@ export default {
         p = this.pages.length;
       }
       this.$store.commit("products/paginator", p);
-    }
+    },
   },
   mounted() {
     if (this.$parent.$el.id === "index") {
@@ -122,13 +104,14 @@ export default {
     }
   },
   created() {
+    this.$store.commit("products/setFiltered");
     this.setPage(1);
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.product__box {
+.product_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,7 +122,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.product__box__browse {
+.product_box_browse {
   margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -148,7 +131,7 @@ export default {
   flex-basis: 100%;
 }
 
-.product__box__browse__a {
+.product_box_browse_a {
   height: 48px;
   width: 212px;
   background-color: #f16d7f;
@@ -170,11 +153,11 @@ export default {
   transition: all 0.3s;
 }
 
-.product__box__browse__a__arrow {
+.product_box_browse_a_arrow {
   margin-left: 9px;
 }
 
-.product__box__browse__a:hover {
+.product_box_browse_a:hover {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
   background-color: white;
@@ -198,30 +181,30 @@ export default {
   z-index: 1;
 }
 
-.product:hover .product__img {
+.product:hover .product_img {
   -webkit-filter: brightness(40%);
   filter: brightness(40%);
 }
 
-.product:hover .product__add {
+.product:hover .product_add {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.product__name {
+.product_name {
   font-size: 13px;
   color: #222222;
   text-align: center;
   text-transform: uppercase;
 }
 
-.product__name:hover {
+.product_name:hover {
   color: #f16d7f;
   font-weight: bold;
 }
 
-.product__price {
+.product_price {
   font-size: 16px;
   font-weight: bold;
   color: #f16d7f;
@@ -229,11 +212,11 @@ export default {
   margin-top: 15px;
 }
 
-.product__content {
+.product_content {
   padding: 19px 15px;
 }
 
-.product__add {
+.product_add {
   position: absolute;
   top: 97px;
   left: 70px;
@@ -252,7 +235,7 @@ export default {
   color: #ffffff;
 }
 
-.product__add:hover {
+.product_add:hover {
   -webkit-box-shadow: 0 0 5px #fff;
   box-shadow: 0 0 5px #fff;
 }

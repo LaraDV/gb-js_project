@@ -2,37 +2,35 @@
   <div>
     <breadcrumbsComp></breadcrumbsComp>
     <form class="selected center">
-      <article style="font-weight: bold;" class="selected__products selected__products__heading">
-        <h2 style="width: 570px; text-align: left;" class="selected__products_h2">products details</h2>
-        <h2 class="selected__products_h2">unit price</h2>
-        <h2 class="selected__products_h2">quantity</h2>
-        <h2 class="selected__products_h2">shipping</h2>
-        <h2 class="selected__products_h2">subtotal</h2>
-        <h2 class="selected__products_h2">action</h2>
+      <article style="font-weight: bold;" class="selected_products selected_products_heading">
+        <h2 style="width: 570px; text-align: left;" class="selected_products_h2">products details</h2>
+        <h2 class="selected_products_h2">unit price</h2>
+        <h2 class="selected_products_h2">quantity</h2>
+        <h2 class="selected_products_h2">shipping</h2>
+        <h2 class="selected_products_h2">subtotal</h2>
+        <h2 class="selected_products_h2">action</h2>
       </article>
-      <article class="selected__products" v-for="item of cartItems" :key="item.id_product">
-        <div class="selected__products__char">
-          <a href="singlePage.html">
-            <nuxt-link no-prefetch :to="'/products/' + item.id_product">
-              <img :src="item.product_image" class="selected__products__char_img" alt="img" />
-            </nuxt-link>
-          </a>
-          <div class="selected__products__content">
-            <h2 class="selected__products__content_h2">Mango People T-shirt</h2>
-            <p class="selected__products__content_p">
+      <article class="selected_products" v-for="item of cartItems" :key="item.id_product">
+        <div class="selected_products_char">
+          <nuxt-link no-prefetch :to="'/products/' + item.id_product">
+            <img :src="item.product_image" class="selected_products_char_img" alt="img" />
+          </nuxt-link>
+          <div class="selected_products_content">
+            <h2 class="selected_products_content_h2">Mango People T-shirt</h2>
+            <p class="selected_products_content_p">
               Color:
-              <span class="selected__products__content_p_span">red</span>
+              <span class="selected_products_content_p_span">red</span>
             </p>
-            <p class="selected__products__content_p">
+            <p class="selected_products_content_p">
               Size:
-              <span class="selected__products__content_p_span">Xll</span>
+              <span class="selected_products_content_p_span">Xll</span>
             </p>
           </div>
         </div>
-        <div class="selected__products__char">${{item.price}}</div>
-        <div class="selected__products__char">
+        <div class="selected_products_char">${{item.price}}</div>
+        <div class="selected_products_char">
           <input
-            class="choose__box__input_cart"
+            class="choose_box_input_cart"
             placeholder="2"
             type="number"
             min="0"
@@ -40,10 +38,10 @@
             @change.prevent="changeFromInput(item, $event)"
           />
         </div>
-        <div class="selected__products__char">FREE</div>
-        <div class="selected__products__char">${{item.quantity*item.price}}</div>
-        <div class="selected__products__char">
-          <a class="selected__del">
+        <div class="selected_products_char">FREE</div>
+        <div class="selected_products_char">${{item.quantity*item.price}}</div>
+        <div class="selected_products_char">
+          <a class="selected_del">
             <img src="img/del.png" @click.prevent="remove_from_cart(item)" />
           </a>
         </div>
@@ -67,16 +65,13 @@
         </datalist>
         <input class="apply_input" type="text" style="margin: 20px 0;" placeholder="State" />
         <input class="apply_input" type="text" placeholder="Postcode / Zip" />
-        <button class="apply_input_submit" >get a quote</button>
+        <button class="apply_input_submit">get a quote</button>
       </form>
       <form class="apply_form" action="#">
         <h2 class="apply_label">coupon discount</h2>
         <p class="apply_p">Enter your coupon code if you have one</p>
         <input class="apply_input" type="text" style="margin: 20px 0;" placeholder="State" />
-        <button
-          class="apply_input_submit"
-          style="width: 118px; margin: 0;"
-        >Apply coupon</button>
+        <button class="apply_input_submit" style="width: 118px; margin: 0;">Apply coupon</button>
       </form>
       <form class="grand_total" action="#">
         <p class="grand_total_p">Sub total ${{totalSumm}}</p>
@@ -84,7 +79,7 @@
           GRAND TOTAL
           <span style="color:#f16d7f;">${{totalSumm}}</span>
         </h2>
-        <nuxt-link class="grand_total_a" to="/checkout">proceed to checkout</nuxt-link>
+        <nuxt-link no-prefetch class="grand_total_a" to="/checkout">proceed to checkout</nuxt-link>
       </form>
     </section>
   </div>
@@ -95,11 +90,11 @@ import breadcrumbsComp from "@/components/breadcrumbsComp";
 export default {
   data() {
     return {
-      showCart: false
+      showCart: false,
     };
   },
   components: {
-    breadcrumbsComp
+    breadcrumbsComp,
   },
   computed: {
     cartItems() {
@@ -107,7 +102,7 @@ export default {
     },
     totalSumm() {
       return this.$store.getters["cartComp/totalSumm"];
-    }
+    },
   },
   methods: {
     remove_from_cart(product) {
@@ -123,16 +118,16 @@ export default {
         this.$store.dispatch("cartComp/add", { product, n });
       }
     },
-    clearCart(){
+    clearCart() {
       this.$store.dispatch("cartComp/clearCart");
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .selected {
-  &__products {
+  &_products {
     display: flex;
     padding: 25px 0;
     &:nth-child(2n) {
@@ -147,7 +142,7 @@ export default {
       font-weight: bold;
       width: 155px;
     }
-    &__char {
+    &_char {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -155,17 +150,20 @@ export default {
       text-align: right;
       font-size: 13px;
       color: #656565;
-      .choose__box__input_cart {
+      .choose_box_input_cart {
         text-align: center;
         height: 30px;
         width: 54px;
       }
+      &_img {
+        width: 100px;
+      }
     }
-    &__char:first-child {
+    &_char:first-child {
       width: 570px;
       justify-content: flex-start;
     }
-    &__content {
+    &_content {
       text-align: left;
       margin-left: 21px;
       &_h2 {
@@ -215,6 +213,7 @@ export default {
 .apply_form {
   display: flex;
   flex-direction: column;
+  margin-bottom: 97px;
   .apply_label {
     font-size: 16px;
     font-weight: bold;

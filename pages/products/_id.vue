@@ -1,5 +1,6 @@
 <template>
   <div>
+    <breadcrumbsComp></breadcrumbsComp>
     <main class="singleP_main">
       <div class="product_images">
         <img class="images" :src="product.product_image" alt="photo" />
@@ -77,7 +78,11 @@
         <div class="product__content">
           <a href="#" class="product__name">{{product.product_name}}</a>
           <p class="product__price">${{product.price}}</p>
-          <a href="#" class="product__add" @click.prevent="$store.dispatch('cartComp/add', { product})">Add to Cart</a>
+          <a
+            href="#"
+            class="product__add"
+            @click.prevent="$store.dispatch('cartComp/add', { product})"
+          >Add to Cart</a>
         </div>
       </div>
     </section>
@@ -85,14 +90,18 @@
 </template>
 
 <script>
+import breadcrumbsComp from "@/components/breadcrumbsComp";
 export default {
   data() {
     return {};
   },
+  components: {
+    breadcrumbsComp,
+  },
   computed: {
     product({ $route }) {
       return this.$store.getters["products/products"].find(
-        el => el.id_product == $route.params.id
+        (el) => el.id_product == $route.params.id
       );
     },
     totalSumm() {
@@ -100,14 +109,14 @@ export default {
     },
     yml_products() {
       return this.$store.getters["products/yml_products"];
-    }
+    },
   },
   methods: {
     add_to_cart(product) {
       let n = Number(document.getElementById("QUANTITY").value);
       this.$store.dispatch("cartComp/add", { product, n });
-    }
-  }
+    },
+  },
 };
 /////////////////////////-- другой вариант --////////////////////////
 // import { mapGetters } from 'vuex'
