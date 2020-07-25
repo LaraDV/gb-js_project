@@ -61,19 +61,18 @@ export default {
   methods: {},
   computed: {
     ...mapGetters({
-      products: "products/products",
+      products: "products/topRatingProducts",
       filterArr: "products/filterArr",
       collection: "products/collection",
       pages: "products/pages"
     }),
     desired() {
-      const regexp = new RegExp(
+      if (this.isIndexPage) {
+        const regexp = new RegExp(
         this.$store.getters["products/userSearch"],
         "i"
       );
-      if (this.isIndexPage) {
         return this.products
-          .filter((el) => el.rating >= 5)
           .filter((el) => regexp.test(el.product_name));
       } else {
         return this.collection;

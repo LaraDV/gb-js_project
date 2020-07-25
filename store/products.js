@@ -298,6 +298,88 @@ export const state = () => ({
       "designer": "Bronn"
     }
   ],
+  topRatingProducts:[
+    {
+      "id_product": 1,
+      "product_name": "ZARA T-SHIRT",
+      "product_image": "/img/t-shirt1.jpeg",
+      "category": "T-Shirts",
+      "price": 104,
+      "rating": 5,
+      "brand": "ZARA",
+      "designer": "Jaime"
+    },
+    {
+      "id_product": 2,
+      "product_name": "OYSHO BLOUSE",
+      "product_image": "/img/t-shirt2.jpeg",
+      "category": "Blouses",
+      "price": 104,
+      "rating": 5,
+      "brand": "OYSHO",
+      "designer": "Jaime"
+    },
+    {
+      "id_product": 4,
+      "product_name": "MANGO PEOPLE DRESS",
+      "product_image": "/img/t-shirt4.jpeg",
+      "category": "Dresses",
+      "price": 300,
+      "rating": 5,
+      "brand": "MANGO",
+      "designer": "Jaime"
+    },
+    {
+      "id_product": 5,
+      "product_name": "ZARA DRESS",
+      "product_image": "/img/t-shirt5.jpeg",
+      "category": "Dresses",
+      "price": 78,
+      "rating": 5,
+      "brand": "ZARA",
+      "designer": "Bronn"
+    },
+    {
+      "id_product": 7,
+      "product_name": "MANGO PEOPLE PANTS",
+      "product_image": "/img/t-shirt7.jpeg",
+      "category": "Pants",
+      "price": 88,
+      "rating": 5,
+      "brand": "MANGO",
+      "designer": "Bronn"
+    },
+    {
+      "id_product": 11,
+      "product_name": "MANGO PEOPLE COAT",
+      "product_image": "/img/pr_3.jpeg",
+      "category": "Jackets & Coats",
+      "price": 52,
+      "rating": 5,
+      "brand": "MANGO",
+      "designer": "Jaime"
+    },
+    {
+      "id_product": 13,
+      "product_name": "MANGO PEOPLE SWEATSHIRT",
+      "product_image": "/img/pr_5.jpeg",
+      "category": "Hoodies & Sweatshirts",
+      "price": 52,
+      "rating": 5,
+      "brand": "MANGO",
+      "designer": "Jaime"
+    },
+    {
+      "id_product": 15,
+      "product_name": "MANGO PEOPLE PANTS",
+      "product_image": "/img/pr_7.jpeg",
+      "category": "Pants",
+      "price": 52,
+      "rating": 5,
+      "brand": "MANGO",
+      "designer": "Jaime"
+    }
+  ],
   filtered: [],
   perPage: 9,
   pagination: {}
@@ -413,4 +495,5 @@ export const getters = {
   pages: s => s.pagination.pages,
   perPage: s => s.perPage,
   yml_products: s => s.yml_products,
+  topRatingProducts: s => s.topRatingProducts
 }
