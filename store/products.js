@@ -450,12 +450,12 @@ export const mutations = {
       if (i === currentPage)
         allPages.push({
           pageNumber: i,
-          isActive: true
+          isActive: true// true для задания класса active странице в пагинации, если это текущая страница
         })
       else {
         allPages.push({
           pageNumber: i,
-          isActive: false
+          isActive: false//
         })
       }
     }
@@ -491,7 +491,7 @@ export const getters = {
   brands: s => s.brands,
   categories: s => s.categories,
   designers: s => s.designers,
-  collection: s => s.filtered.slice(s.pagination.startIndex, s.pagination.endIndex + 1),
+  collection: s => s.filtered.slice(s.pagination.startIndex, s.pagination.endIndex + 1),//формируем массив в диапазоне startIndex и endIntex (см. paginator)
   pages: s => s.pagination.pages,
   perPage: s => s.perPage,
   yml_products: s => s.yml_products,

@@ -62,7 +62,6 @@ export default {
   computed: {
     ...mapGetters({
       products: "products/topRatingProducts",
-      filterArr: "products/filterArr",
       collection: "products/collection",
       pages: "products/pages"
     }),
