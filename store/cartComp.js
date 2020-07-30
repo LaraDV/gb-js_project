@@ -15,7 +15,7 @@ export const mutations = {
   },
   removeProduct(state, find) {
     state.cartItems.splice(state.cartItems.indexOf(find), 1);
-    state.totalSumm -= find.price
+    state.totalSumm -= find.price*find.quantity;
   },
   clear(state){
     return state.cartItems = [];

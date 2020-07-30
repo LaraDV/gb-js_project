@@ -110,12 +110,16 @@ export default {
       this.$store.dispatch("cartComp/remove", { product, n });
     },
     changeFromInput(product, event) {
-      if (product.quantity > event.target.value) {
-        let n = event.target.value - product.quantity;
-        this.$store.dispatch("cartComp/remove", { product, n });
+      if (event.target.value == 0) {
+        this.$store.commit("cartComp/removeProduct", product);
       } else {
-        let n = event.target.value - product.quantity;
-        this.$store.dispatch("cartComp/add", { product, n });
+        if (product.quantity > event.target.value) {
+          let n = event.target.value - product.quantity;
+          this.$store.dispatch("cartComp/remove", { product, n });
+        } else {
+          let n = event.target.value - product.quantity;
+          this.$store.dispatch("cartComp/add", { product, n });
+        }
       }
     },
     clearCart() {
